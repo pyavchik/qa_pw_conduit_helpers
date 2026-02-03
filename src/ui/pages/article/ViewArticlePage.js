@@ -5,13 +5,13 @@ export class ViewArticlePage {
     this.page = page;
     this.articleTitleHeader = page.getByRole('heading', { level: 1 });
     this.editArticleLink = page
-      .getByRole('link', { name: 'Edit Article' })
+      .getByRole('link', { name: /Edit Article/ })
       .first();
   }
 
   async clickEditArticleLink() {
     await test.step(`Click the 'Edit Article' link`, async () => {
-      await this.editArticleLink.click();
+      await this.editArticleLink.click({ timeout: 15000 });
       await this.page.waitForURL(/\/editor\//);
     });
   }

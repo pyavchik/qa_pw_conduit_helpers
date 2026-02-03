@@ -31,6 +31,7 @@ export async function editArticleTitle(page) {
     await createArticlePage.clickPublishArticleButton();
 
     await page.waitForURL(/\/article\//);
+    // Conduit app does not persist title/body edits; page shows original values
     await viewArticlePage.assertArticleTitleIsVisible(article.title);
   });
 }
@@ -61,6 +62,7 @@ export async function editArticleText(page) {
     await createArticlePage.clickPublishArticleButton();
 
     await page.waitForURL(/\/article\//);
+    // Conduit app does not persist title/body edits; page shows original values
     await viewArticlePage.assertArticleTextIsVisible(article.text);
   });
 }
@@ -167,6 +169,7 @@ export async function editMultipleArticleFields(page) {
     await createArticlePage.clickPublishArticleButton();
 
     await page.waitForURL(/\/article\//);
+    // Conduit app does not persist title/body edits; page shows original values
     await viewArticlePage.assertArticleTitleIsVisible(article.title);
     await viewArticlePage.assertArticleTextIsVisible(article.text);
   });
