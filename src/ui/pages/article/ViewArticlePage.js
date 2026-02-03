@@ -22,6 +22,10 @@ export class ViewArticlePage {
     });
   }
 
+  /**
+   * Asserts the description is visible. Use on pages that show article previews
+   * (e.g. home feed). The article view page does not display the description.
+   */
   async assertArticleDescriptionIsVisible(description) {
     await test.step(`Assert the article has correct description`, async () => {
       await expect(this.page.getByText(description)).toBeVisible();

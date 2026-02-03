@@ -1,10 +1,8 @@
 import { test } from '@playwright/test';
+import { generateNewArticleData } from '../../src/common/testData/generateNewArticleData';
 import { generateNewUserData } from '../../src/common/testData/generateNewUserData';
+import { createNewArticle } from '../../src/ui/actions/article/createNewArticle';
 import { signUpUser } from '../../src/ui/actions/auth/signUpUser';
-import {
-  createArticleWithRequiredFields,
-  createArticleWithTags,
-} from '../../src/ui/actions/article/createArticleActions';
 
 test.beforeEach(async ({ page }) => {
   const user = generateNewUserData();
@@ -12,9 +10,11 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('Create an article with required fields', async ({ page }) => {
-  await createArticleWithRequiredFields(page);
+  const article = generateNewArticleData();
+  await createNewArticle(page, article);
 });
 
 test('Create an article with tags', async ({ page }) => {
-  await createArticleWithTags(page);
+  const article = generateNewArticleData(2);
+  await createNewArticle(page, article);
 });
