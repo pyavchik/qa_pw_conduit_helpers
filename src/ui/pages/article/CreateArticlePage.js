@@ -56,7 +56,8 @@ export class CreateArticlePage {
       const tagPill = this.page.locator('.tag-pill, .tag-default').filter({
         hasText: new RegExp(`^${tag}$`),
       });
-      const removeButton = tagPill.locator('button, .ion-close-round, [class*="close"]');
+      const removeButton = tagPill
+        .locator('button, .ion-close-round, [class*="close"]');
       await removeButton.first().click();
     });
   }

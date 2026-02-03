@@ -42,7 +42,7 @@ export class ViewArticlePage {
 
   async assertTagIsNotVisible(tag) {
     await test.step(`Assert the tag '${tag}' is not visible`, async () => {
-      await expect(this.page.getByText(tag, { exact: true })).not.toBeVisible();
+      await expect(this.page.getByText(tag, { exact: true })).toBeHidden();
     });
   }
 }
